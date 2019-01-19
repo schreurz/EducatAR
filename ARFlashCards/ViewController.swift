@@ -16,18 +16,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var additionalText: UITextView!
     
     var arController: ARController!
-    var shapesFactory: ShapesFactory!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         
-        shapesFactory = ShapesFactory(sceneView: sceneView)
-        
         additionalText.delegate = self as? UITextViewDelegate
         additionalText.isHidden = false
         
-//        self.arController = ARController(viewController: self)
+        self.arController = ARController(viewController: self)
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
@@ -39,7 +36,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        resetTrackingConfiguration()
+        arController.resetTrackingConfiguration()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,7 +45,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-    
+
+    /*
     func resetTrackingConfiguration() {
         
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
@@ -117,4 +115,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("not working")
         }
     }
+    */
 }
