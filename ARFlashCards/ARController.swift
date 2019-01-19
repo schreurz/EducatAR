@@ -21,15 +21,6 @@ class ARController {
         shapesFactory = ShapesFactory(sceneView: self.viewController.sceneView)
     }
     
-    func resetTrackingConfiguration() {
-        
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
-        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
-        self.viewController.sceneView.session.run(configuration, options: options)
-    }
-    
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer,
                   didAdd node: SCNNode,
@@ -50,6 +41,15 @@ class ARController {
         DispatchQueue.main.async {
             print(imageName)
         }
+    }
+    
+    func resetTrackingConfiguration() {
+        
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.detectionImages = referenceImages
+        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
+        self.viewController.sceneView.session.run(configuration, options: options)
     }
     
     //    func addBox(anchor: ARImageAnchor) {
