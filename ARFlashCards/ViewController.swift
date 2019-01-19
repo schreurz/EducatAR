@@ -17,7 +17,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var additionalText: UITextView!
     
     var objectHidden: Bool!
-//    var shapesFactory: ShapesFactory!
+    var shapesFactory: ShapesFactory!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         objectHidden = true
         additionalText.isHidden = objectHidden
         
-//        shapesFactory = ShapesFactory(sceneView: sceneView)
+        shapesFactory = ShapesFactory(sceneView: sceneView)
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
@@ -86,15 +86,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func addShape(name: String,anchor: ARImageAnchor){
         print(name)
+        var shape: SCNNode;
         switch name{
             case("IMG_0247"):
-                let brain = SCNScene(named: "new.scnassets/model.scn")
-                let brainNode = brain?.rootNode.childNodes[0]
-                sceneView.scene.rootNode.addChildNode(brainNode!)
-                print("anchor position:",anchor.transform[0])
-                brainNode!.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-                brainNode!.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
-                sceneView.scene.rootNode.addChildNode(brainNode!)
+                
+                shape = shapesFactory.createShape(
+                    filePath: "new.scnassets/model.scn",
+                    anchor: anchor)
+                
+                shape.scale = SCNVector3(0.01, 0.01, 0.01)
+            
        
             case("IMG_0248"):
                 let sphere = SCNSphere(radius: 0.05)
@@ -102,6 +103,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sphereNode.geometry = sphere
                 sphereNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
                 sceneView.scene.rootNode.addChildNode(sphereNode)
+            
             default:
                 print("not working")
         }
