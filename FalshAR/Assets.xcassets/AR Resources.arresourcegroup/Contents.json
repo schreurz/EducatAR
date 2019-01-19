@@ -1,0 +1,20 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "resources" : [
+    {
+      "filename" : "IMG_0233 2.arreferenceimage"
+    },
+    {
+      "filename" : "IMG_0234 2.arreferenceimage"
+    },
+    {
+      "filename" : "QRCode1.arreferenceimage"
+    },
+    {
+      "filename" : "QRCode2.arreferenceimage"
+    }
+  ]
+}
