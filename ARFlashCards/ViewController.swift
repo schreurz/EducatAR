@@ -9,31 +9,47 @@
 import UIKit
 import SceneKit
 import ARKit
+import FirebaseDatabase
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var additionalText: UITextView!
     
-    var arController: ARController!
+    var arController: ARController! // render 3d objects
+    var firebaseCom: FirebaseCommunicator! // communicator for firebase
     
+    // runs when view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         
         additionalText.delegate = self as? UITextViewDelegate
-        additionalText.isHidden = false
+        additionalText.isHidden = true
         
         self.arController = ARController(viewController: self)
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        
+        firebaseCom = FirebaseCommunicator()
     }
     
-    func dismissKeyboard() {
-        view.endEditing(true)
+    // ADDITIONAL TEXT
+    func showAdditionalText(name: String) {
+        DispatchQueue.main.async {
+            self.additionalText.isHidden = false
+        }
     }
     
+    func hideAdditionalText(name: String) {
+        DispatchQueue.main.async {
+            self.additionalText.isHidden = true
+        }
+    }
+    // ADDITIONAL TEXT
+    
+    /// ----------------------------------------- ///
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         arController.resetTrackingConfiguration()

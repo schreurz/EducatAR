@@ -9,11 +9,11 @@
 import Foundation
 import SceneKit
 import ARKit
+import Firebase
 
 class ARController {
     
     weak var viewController: ViewController!
-    var objectHidden = true;
     var shapesFactory: ShapesFactory!
     
     init (viewController: ViewController) {
@@ -66,6 +66,7 @@ class ARController {
     
     func addShape(name: String,anchor: ARImageAnchor){
         
+        self.viewController?.showAdditionalText(name: name)
         print(name)
         var shape: SCNNode;
         switch name{

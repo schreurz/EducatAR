@@ -17,6 +17,7 @@
 		BAEBC52621F307BD003C4593 /* ARFlashCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC52421F307BD003C4593 /* ARFlashCards.xcdatamodeld */; };
 		BAEBC52821F307BE003C4593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAEBC52721F307BE003C4593 /* Assets.xcassets */; };
 		BAEBC52B21F307BE003C4593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAEBC52921F307BE003C4593 /* LaunchScreen.storyboard */; };
+		BAFC37FE21F3D6870050F81B /* FirebaseCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFC37FD21F3D6870050F81B /* FirebaseCommunicator.swift */; };
 		EE0AE7FA724EBF15F550F849 /* Pods_ARFlashCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1B5B2B6BF4B89C8F774436 /* Pods_ARFlashCards.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		BAEBC52721F307BE003C4593 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAEBC52A21F307BE003C4593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAEBC52C21F307BE003C4593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAFC37FD21F3D6870050F81B /* FirebaseCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCommunicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				BAEBC52C21F307BE003C4593 /* Info.plist */,
 				BAEBC52421F307BD003C4593 /* ARFlashCards.xcdatamodeld */,
 				10354A9121F36C5700AB7E5B /* new.scnassets */,
+				BAFC37FD21F3D6870050F81B /* FirebaseCommunicator.swift */,
 			);
 			path = ARFlashCards;
 			sourceTree = "<group>";
@@ -205,14 +208,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEBC52021F307BD003C4593 /* ViewController.swift in Sources */,
+				BAFC37FE21F3D6870050F81B /* FirebaseCommunicator.swift in Sources */,
 				BAEBC51E21F307BD003C4593 /* AppDelegate.swift in Sources */,
 				BAEBC52621F307BD003C4593 /* ARFlashCards.xcdatamodeld in Sources */,
 				BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */,
