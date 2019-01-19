@@ -79,14 +79,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         print(name)
         switch name{
             case("IMG_0247"):
-                let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
-                
-                let boxNode = SCNNode()
-                boxNode.geometry = box
+                let brain = SCNScene(named: "new.scnassets/brain.scn")!
+                let brainNode = brain.rootNode.childNode(withName:"brain", recursively:true)
+                sceneView.scene.rootNode.addChildNode(brainNode!)
                 print("anchor position:",anchor.transform[0])
-                boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-                
-                sceneView.scene.rootNode.addChildNode(boxNode)
+                brainNode!.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
+
+                sceneView.scene.rootNode.addChildNode(paperPlaneNode)
+
        
             case("IMG_0248"):
                 let sphere = SCNSphere(radius: 0.05)
