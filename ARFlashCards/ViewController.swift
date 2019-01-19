@@ -13,15 +13,19 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var additionalText: UITextView!
+    
+    var objectHidden: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         
+        objectHidden = true
+        additionalText.isHidden = objectHidden
+        
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,9 +88,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.scene.rootNode.addChildNode(brainNode!)
                 print("anchor position:",anchor.transform[0])
                 brainNode!.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-
-                sceneView.scene.rootNode.addChildNode(paperPlaneNode)
-
        
             case("IMG_0248"):
                 let sphere = SCNSphere(radius: 0.05)
