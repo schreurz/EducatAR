@@ -49,6 +49,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode() }
+        sceneView.session.remove(anchor: anchor)
+
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
         let referenceImage = imageAnchor.referenceImage
         let imageName = referenceImage.name ?? "no name"
@@ -76,7 +78,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func addShape(name: String,anchor: ARImageAnchor){
         print(name)
         switch name{
-            case("QRCode2"):
+            case("IMG_0247"):
                 let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
                 
                 let boxNode = SCNNode()
@@ -85,7 +87,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
                 
                 sceneView.scene.rootNode.addChildNode(boxNode)
-            case("QRCode1"):
+       
+            case("IMG_0248"):
                 let sphere = SCNSphere(radius: 0.05)
                 let sphereNode = SCNNode()
                 sphereNode.geometry = sphere
