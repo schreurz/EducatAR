@@ -13,9 +13,11 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
     @IBOutlet weak var additionalText: UITextView!
     
     var objectHidden: Bool!
+    var shapesFactory: ShapesFactory!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +26,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         objectHidden = true
         additionalText.isHidden = objectHidden
         
+        shapesFactory = ShapesFactory(sceneView: sceneView)
+        
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
