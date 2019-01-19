@@ -9,8 +9,9 @@
 import UIKit
 import SceneKit
 import ARKit
-class ViewController: UIViewController, ARSCNViewDelegate{
 
+class ViewController: UIViewController, ARSCNViewDelegate {
+    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var additionalText: UITextView!
     
@@ -27,12 +28,8 @@ class ViewController: UIViewController, ARSCNViewDelegate{
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        
-        view.addGestureRecognizer(tap)
     }
-  
+    
     func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -49,75 +46,4 @@ class ViewController: UIViewController, ARSCNViewDelegate{
         sceneView.session.pause()
     }
     
-    func resetTrackingConfiguration() {
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
-        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
-        sceneView.session.run(configuration, options: options)
-    }
-    // MARK: - ARSCNViewDelegate
-
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
-            node.removeFromParentNode() }
-        sceneView.session.remove(anchor: anchor)
-
-        guard let imageAnchor = anchor as? ARImageAnchor else { return }
-        let referenceImage = imageAnchor.referenceImage
-        let imageName = referenceImage.name ?? "no name"
-
-//        addBox(anchor: imageAnchor)
-        addShape(name: imageName,anchor: imageAnchor)
-        DispatchQueue.main.async {
-            print(imageName)
-        }
-        
-    }
-    
-//    func convertImages(){
-//        let asset = MDLAsset(url:URL(fileURLWithPath: "../../model.dae"))
-//        guard let object = asset.object(at: 0) as? MDLMesh else {
-//            fatalError("Failed to get mesh from asset.")
-//        }
-//    }
-
-    
-    func addShape(name: String,anchor: ARImageAnchor){
-        print(name)
-        var shape: SCNNode;
-//        convertImages()
-//        let fileUrl = URL(fileURLWithPath: "/Users/swapnikkatkoori1/Downloads/model.dae")
-        
-        do {
-            let scene = try SCNScene(url: URL(fileURLWithPath: "/Users/swapnikkatkoori1/Downloads/model.dae") , options: nil)
-            // Set the scene to the view
-            sceneView.scene = scene
-        } catch {
-            print("ERROR loading scene")
-        }
-        
-        switch name{
-            case("IMG_0247"):
-                
-                shape = shapesFactory.createShape(
-                    filePath: "new.scnassets/model.scn",
-                    anchor: anchor)
-                
-                shape.scale = SCNVector3(0.01, 0.01, 0.01)
-            
-            case("IMG_0248"):
-                let sphere = SCNSphere(radius: 0.02)
-                let sphereNode = SCNNode()
-                sphereNode.geometry = sphere
-                sphereNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-                sceneView.scene.rootNode.addChildNode(sphereNode)
-            
-            default:
-                print("not working")
-        }
-    }
-
-
 }
