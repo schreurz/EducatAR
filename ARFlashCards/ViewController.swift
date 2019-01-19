@@ -88,11 +88,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         print(name)
         switch name{
             case("IMG_0247"):
-                let brain = SCNScene(named: "new.scnassets/brain.scn")!
-                let brainNode = brain.rootNode.childNode(withName:"brain", recursively:true)
+                let brain = SCNScene(named: "new.scnassets/model.scn")
+                let brainNode = brain?.rootNode.childNodes[0]
                 sceneView.scene.rootNode.addChildNode(brainNode!)
                 print("anchor position:",anchor.transform[0])
                 brainNode!.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
+                brainNode!.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
+                sceneView.scene.rootNode.addChildNode(brainNode!)
        
             case("IMG_0248"):
                 let sphere = SCNSphere(radius: 0.05)
