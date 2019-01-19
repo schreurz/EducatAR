@@ -73,16 +73,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    func addBox(anchor: ARImageAnchor) {
-        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
-        
-        let boxNode = SCNNode()
-        boxNode.geometry = box
-        print("anchor position:",anchor.transform[0])
-        boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-        
-        sceneView.scene.rootNode.addChildNode(boxNode)
-    }
+//    func addBox(anchor: ARImageAnchor) {
+//        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
+//
+//        let boxNode = SCNNode()
+//        boxNode.geometry = box
+//        print("anchor position:",anchor.transform[0])
+//        boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
+//
+//        sceneView.scene.rootNode.addChildNode(boxNode)
+//    }
+//
     
     func addShape(name: String,anchor: ARImageAnchor){
         print(name)
