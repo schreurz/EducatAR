@@ -10,6 +10,8 @@
 		10354A9221F36C5700AB7E5B /* new.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10354A9121F36C5700AB7E5B /* new.scnassets */; };
 		108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108D1F6E21F30ED3008CD360 /* Main.storyboard */; };
 		BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */; };
+		BA6FAE4C21F397FE009D08ED /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4B21F397FE009D08ED /* ARController.swift */; };
+		BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */; };
 		BAEBC51E21F307BD003C4593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC51D21F307BD003C4593 /* AppDelegate.swift */; };
 		BAEBC52021F307BD003C4593 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC51F21F307BD003C4593 /* ViewController.swift */; };
 		BAEBC52621F307BD003C4593 /* ARFlashCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC52421F307BD003C4593 /* ARFlashCards.xcdatamodeld */; };
@@ -25,6 +27,8 @@
 		71F3CCA04DE3BECEF664C9FF /* Pods-ARFlashCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlashCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards.release.xcconfig"; sourceTree = "<group>"; };
 		B96636C20AF746AD8FECDEA1 /* Pods-ARFlashCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlashCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = "<group>"; };
+		BA6FAE4B21F397FE009D08ED /* ARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
+		BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BAEBC51A21F307BD003C4593 /* ARFlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEBC51D21F307BD003C4593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEBC51F21F307BD003C4593 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,9 +80,11 @@
 		BAEBC51C21F307BD003C4593 /* ARFlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */,
 				BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */,
 				BAEBC51D21F307BD003C4593 /* AppDelegate.swift */,
 				BAEBC51F21F307BD003C4593 /* ViewController.swift */,
+				BA6FAE4B21F397FE009D08ED /* ARController.swift */,
 				BAEBC52721F307BE003C4593 /* Assets.xcassets */,
 				108D1F6E21F30ED3008CD360 /* Main.storyboard */,
 				BAEBC52921F307BE003C4593 /* LaunchScreen.storyboard */,
@@ -159,6 +165,7 @@
 			files = (
 				10354A9221F36C5700AB7E5B /* new.scnassets in Resources */,
 				108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */,
+				BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */,
 				BAEBC52B21F307BE003C4593 /* LaunchScreen.storyboard in Resources */,
 				BAEBC52821F307BE003C4593 /* Assets.xcassets in Resources */,
 			);
@@ -222,6 +229,7 @@
 				BAEBC51E21F307BD003C4593 /* AppDelegate.swift in Sources */,
 				BAEBC52621F307BD003C4593 /* ARFlashCards.xcdatamodeld in Sources */,
 				BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */,
+				BA6FAE4C21F397FE009D08ED /* ARController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

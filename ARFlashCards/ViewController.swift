@@ -12,31 +12,34 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate{
 
     @IBOutlet var sceneView: ARSCNView!
-    
     @IBOutlet weak var additionalText: UITextView!
     
-    
-
-    var objectHidden: Bool!
-    var shapesFactory: ShapesFactory!
+    var arController: ARController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         
-        objectHidden = true
-        additionalText.isHidden = objectHidden
+        additionalText.delegate = self as? UITextViewDelegate
+        additionalText.isHidden = false
         
-        shapesFactory = ShapesFactory(sceneView: sceneView)
+        self.arController = ARController(viewController: self)
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        view.addGestureRecognizer(tap)
     }
-    
+  
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        resetTrackingConfiguration()
+        self.arController.resetTrackingConfiguration()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,18 +120,4 @@ class ViewController: UIViewController, ARSCNViewDelegate{
     }
 
 
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }
