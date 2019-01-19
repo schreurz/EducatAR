@@ -9,13 +9,14 @@
 import UIKit
 import SceneKit
 import ARKit
-
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate{
 
     @IBOutlet var sceneView: ARSCNView!
     
     @IBOutlet weak var additionalText: UITextView!
     
+    
+
     var objectHidden: Bool!
     var shapesFactory: ShapesFactory!
     
@@ -63,7 +64,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
         let referenceImage = imageAnchor.referenceImage
         let imageName = referenceImage.name ?? "no name"
-        print("image anchor :", imageAnchor)
 
 //        addBox(anchor: imageAnchor)
         addShape(name: imageName,anchor: imageAnchor)
@@ -73,21 +73,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-//    func addBox(anchor: ARImageAnchor) {
-//        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
-//
-//        let boxNode = SCNNode()
-//        boxNode.geometry = box
-//        print("anchor position:",anchor.transform[0])
-//        boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-//
-//        sceneView.scene.rootNode.addChildNode(boxNode)
+//    func convertImages(){
+//        let asset = MDLAsset(url:URL(fileURLWithPath: "../../model.dae"))
+//        guard let object = asset.object(at: 0) as? MDLMesh else {
+//            fatalError("Failed to get mesh from asset.")
+//        }
 //    }
-//
+
     
     func addShape(name: String,anchor: ARImageAnchor){
         print(name)
         var shape: SCNNode;
+//        convertImages()
+//        let fileUrl = URL(fileURLWithPath: "/Users/swapnikkatkoori1/Downloads/model.dae")
+        
+        do {
+            let scene = try SCNScene(url: URL(fileURLWithPath: "/Users/swapnikkatkoori1/Downloads/model.dae") , options: nil)
+            // Set the scene to the view
+            sceneView.scene = scene
+        } catch {
+            print("ERROR loading scene")
+        }
+        
         switch name{
             case("IMG_0247"):
                 
@@ -97,9 +104,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 
                 shape.scale = SCNVector3(0.01, 0.01, 0.01)
             
-       
             case("IMG_0248"):
-                let sphere = SCNSphere(radius: 0.05)
+                let sphere = SCNSphere(radius: 0.02)
                 let sphereNode = SCNNode()
                 sphereNode.geometry = sphere
                 sphereNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
