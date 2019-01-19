@@ -22,6 +22,7 @@ class ARController {
     }
     
     func resetTrackingConfiguration() {
+        
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionImages = referenceImages
@@ -33,6 +34,8 @@ class ARController {
     func renderer(_ renderer: SCNSceneRenderer,
                   didAdd node: SCNNode,
                   for anchor: ARAnchor) {
+        
+        
         self.viewController.sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode() }
         self.viewController.sceneView.session.remove(anchor: anchor)
@@ -43,7 +46,7 @@ class ARController {
         print("image anchor :", imageAnchor)
         
         //        addBox(anchor: imageAnchor)
-        addShape(name: imageName,anchor: imageAnchor)
+        addShape(name: imageName, anchor: imageAnchor)
         DispatchQueue.main.async {
             print(imageName)
         }
@@ -62,6 +65,7 @@ class ARController {
     //
     
     func addShape(name: String,anchor: ARImageAnchor){
+        
         print(name)
         var shape: SCNNode;
         switch name{
