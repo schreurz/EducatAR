@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>256563869995-m3nbvjvusjnkkbqa9kmlmenapc6fecjq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.256563869995-m3nbvjvusjnkkbqa9kmlmenapc6fecjq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB--w_5q9ng6RXDrcZyuPi-anCt_EYrJ-c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>256563869995</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.zackaryschreur.ARFlashCards</string>
+	<key>PROJECT_ID</key>
+	<string>augmented-education</string>
+	<key>STORAGE_BUCKET</key>
+	<string>augmented-education.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:256563869995:ios:25f7307d3db911b9</string>
+	<key>DATABASE_URL</key>
+	<string>https://augmented-education.firebaseio.com</string>
+</dict>
+</plist>

@@ -11,6 +11,7 @@
 		108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108D1F6E21F30ED3008CD360 /* Main.storyboard */; };
 		BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */; };
 		BA6FAE4C21F397FE009D08ED /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4B21F397FE009D08ED /* ARController.swift */; };
+		BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */; };
 		BAEBC51E21F307BD003C4593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC51D21F307BD003C4593 /* AppDelegate.swift */; };
 		BAEBC52021F307BD003C4593 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC51F21F307BD003C4593 /* ViewController.swift */; };
 		BAEBC52621F307BD003C4593 /* ARFlashCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEBC52421F307BD003C4593 /* ARFlashCards.xcdatamodeld */; };
@@ -23,6 +24,7 @@
 		108D1F6E21F30ED3008CD360 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = "<group>"; };
 		BA6FAE4B21F397FE009D08ED /* ARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
+		BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BAEBC51A21F307BD003C4593 /* ARFlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEBC51D21F307BD003C4593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEBC51F21F307BD003C4593 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		BAEBC51C21F307BD003C4593 /* ARFlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */,
 				BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */,
 				BAEBC51D21F307BD003C4593 /* AppDelegate.swift */,
 				BAEBC51F21F307BD003C4593 /* ViewController.swift */,
@@ -136,6 +139,7 @@
 			files = (
 				10354A9221F36C5700AB7E5B /* new.scnassets in Resources */,
 				108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */,
+				BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */,
 				BAEBC52B21F307BE003C4593 /* LaunchScreen.storyboard in Resources */,
 				BAEBC52821F307BE003C4593 /* Assets.xcassets in Resources */,
 			);
@@ -291,14 +295,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U85QYT4229;
+				DEVELOPMENT_TEAM = 944T5L3W82;
 				INFOPLIST_FILE = ARFlashCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zackschreur.ARFlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zackaryschreur.ARFlashCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -310,14 +314,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U85QYT4229;
+				DEVELOPMENT_TEAM = 944T5L3W82;
 				INFOPLIST_FILE = ARFlashCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zackschreur.ARFlashCards;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zackaryschreur.ARFlashCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
