@@ -35,8 +35,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         firebaseCom = FirebaseCommunicator()
         
-        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
+        
+        view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(didPinchView)))
     }
     
     func downloadScn(){
@@ -55,6 +56,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //            }
 //        }
  
+    }
+    
+    @objc func didPinchView(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            gestureRecognizer.view?.transform =
+                (gestureRecognizer.view?.transform.scaledBy(x: gestureRecognizer.scale,
+                                                            y: gestureRecognizer.scale))!
+            gestureRecognizer.scale = 1.0
+        }
     }
     
     @objc func didTapView(_ sender: UIView) {
@@ -91,6 +101,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor){
+        // update text
         self.arController.currentFlashCard?.additionalText = self.additionalText.text
         self.arController.renderer(renderer, didAdd: node, for: anchor)
     }
