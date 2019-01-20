@@ -33,6 +33,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         firebaseCom = FirebaseCommunicator()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
+    }
+    
+    @objc func didTapView(_ sender: UIView) {
+        view.endEditing(true)
     }
     
     // ADDITIONAL TEXT
