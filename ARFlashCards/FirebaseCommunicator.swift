@@ -16,12 +16,32 @@ class FirebaseCommunicator {
     var storage = Storage.storage()
     var imageRecieved = UIImage()
     var path=String()
-    
+    var emptyDict: [String: [String]] = [:]
+     var db_ref = Database.database().reference()
     init() {
-        var db_ref = Database.database().reference()
-        db_ref.setValue("Data is working")
-            }
+        
+    }
+    func set_value(id:String, name:String, text:String){
+        emptyDict[name] = [id,text,name]
+        db_ref.setValue(emptyDict)
+    }
     
+    func get_value(name:String){
+//        let collid = db_ref.child("sdjhf").child("1")
+        db_ref.observeSingleEvent(of: .childAdded, with : {(DataSnapshot) in
+            print(DataSnapshot)
+        })
+        
+//        db_ref.observeSingleEvent(of: .childChanged,with : {(Snapshot) in
+//
+//            print("This is the snapshot",Snapshot)
+//
+//        })
+        
+//        collid.observeSingleEvent(of: .value) { (DataSnapshot) in
+//            print(DataSnapshot)
+//        }
+    }
     func getFile()->String{
         
         // Create a reference from a Google Cloud Storage URI
