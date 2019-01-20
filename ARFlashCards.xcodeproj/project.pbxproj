@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10354A9221F36C5700AB7E5B /* new.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10354A9121F36C5700AB7E5B /* new.scnassets */; };
 		108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108D1F6E21F30ED3008CD360 /* Main.storyboard */; };
+		10ECB66F21F3EA2C008E88F6 /* model10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 10ECB66E21F3EA2C008E88F6 /* model10.dae */; };
 		BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */; };
 		BA6FAE4C21F397FE009D08ED /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4B21F397FE009D08ED /* ARController.swift */; };
 		BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */; };
@@ -23,10 +24,11 @@
 /* Begin PBXFileReference section */
 		10354A9121F36C5700AB7E5B /* new.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = new.scnassets; path = art.scnassets/new.scnassets; sourceTree = "<group>"; };
 		108D1F6E21F30ED3008CD360 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		10ECB66E21F3EA2C008E88F6 /* model10.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = model10.dae; sourceTree = "<group>"; };
 		6C1B5B2B6BF4B89C8F774436 /* Pods_ARFlashCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARFlashCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3CCA04DE3BECEF664C9FF /* Pods-ARFlashCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlashCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards.release.xcconfig"; sourceTree = "<group>"; };
 		B96636C20AF746AD8FECDEA1 /* Pods-ARFlashCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlashCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards.debug.xcconfig"; sourceTree = "<group>"; };
-		BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = "<group>"; };
+		BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShapeFactory.swift; path = ../ShapeFactory.swift; sourceTree = "<group>"; };
 		BA6FAE4B21F397FE009D08ED /* ARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
 		BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BAEBC51A21F307BD003C4593 /* ARFlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 		BAEBC51121F307BD003C4593 = {
 			isa = PBXGroup;
 			children = (
+				10ECB66E21F3EA2C008E88F6 /* model10.dae */,
 				BAEBC51C21F307BD003C4593 /* ARFlashCards */,
 				BAEBC51B21F307BD003C4593 /* Products */,
 				1F74ECCEE5C467BAF07934AF /* Pods */,
@@ -163,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10ECB66F21F3EA2C008E88F6 /* model10.dae in Resources */,
 				10354A9221F36C5700AB7E5B /* new.scnassets in Resources */,
 				108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */,
 				BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */,
@@ -205,6 +209,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -212,6 +217,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
