@@ -103,6 +103,7 @@
 				BAEBC52721F307BE003C4593 /* Assets.xcassets */,
 				108D1F6E21F30ED3008CD360 /* Main.storyboard */,
 				BAEBC52921F307BE003C4593 /* LaunchScreen.storyboard */,
+				BAFC37FD21F3D6870050F81B /* FirebaseCommunicator.swift */,
 				BAEBC52C21F307BE003C4593 /* Info.plist */,
 				BAEBC52421F307BD003C4593 /* ARFlashCards.xcdatamodeld */,
 				10354A9121F36C5700AB7E5B /* new.scnassets */,
