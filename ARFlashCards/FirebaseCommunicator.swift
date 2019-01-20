@@ -22,7 +22,7 @@ class FirebaseCommunicator {
         
     }
     func set_value(id:String, name:String, text:String){
-        emptyDict[name] = [id,text,name]
+        emptyDict[name] = [id,name,text]
         db_ref.setValue(emptyDict)
     }
     
