@@ -94,9 +94,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
-    func renderer(_ renderer: SCNSceneRenderer,
-                  didAdd node: SCNNode,
-        self.arController.renderer(renderer, didAdd: node, for: anchor)
-        }
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor){
+                  self.arController.renderer(renderer, didAdd: node, for: anchor)
+        
     }
 }
