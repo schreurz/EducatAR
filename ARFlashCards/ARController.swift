@@ -19,7 +19,7 @@ class ARController {
     var cardDeck: CardDeck
     var currentFlashCard: FlashCard?
     var currentShape: SCNNode?
-    
+    var currentCard = ""
     var shapesFactory: ShapesFactory! // create 3d shapes
     
     init (viewController: ViewController) {
@@ -62,9 +62,8 @@ class ARController {
     
     func renderNewShape(flashCardID: String,anchor: ARImageAnchor) {
         print("flashCardID: ", flashCardID)
-    
-        currentShape = getShape(name: flashCardID, anchor: anchor)!
         
+        currentShape = getShape(name: flashCardID, anchor: anchor)!
         if cardDeck.getCard(name: flashCardID) == nil {
             self.currentFlashCard = FlashCard(id: flashCardID,
                                               name: "test",
@@ -77,26 +76,122 @@ class ARController {
         
         self.viewController?.showAdditionalText(name: flashCardID)
         
+        
     }
     
     // hardcoded shapes to go with flashCardIDs
     func getShape(name: String, anchor: ARImageAnchor) -> SCNNode? {
+        
+        let names = ["brain.scn", "earth.scn", "machine.scn", "molecule.scn", "siloxane.scn","cell.scn"]
+        let randomName = names.randomElement()!
+        print("RandomName", randomName)
         switch name{
             
         case("notecard01"):
             let shape = shapesFactory.createShape(
-                filePath: "new.scnassets/model2.scn",
+                filePath: "new.scnassets/\(randomName)",
                 anchor: anchor)
-            
-//            shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
-            shape.scale = SCNVector3(0.01, 0.01, 0.01)
-            
+            if (randomName == "cell.scn"){
+                shape.scale = SCNVector3(0.000002, 0.000002, 0.000002)
+            }
+            else if (randomName == "molecule.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "sulfuricAcid.scn"){
+                shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
+            }
+            else if (randomName == "earth.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "siloxane.scn"){
+                shape.scale = SCNVector3(0.00005,0.00005,0.00005)
+            }
+            else{
+                shape.scale = SCNVector3(0.01, 0.01, 0.01)
+            }
+            currentCard = "notecard01"
             return shape
             
-            //            shape = shapesFactory.createShape(
-            //                filePath: "new.scnassets/siloxane.scn",
-            //                anchor: anchor)
-            //            shape.scale = SCNVector3(0.00005,0.00005,0.00005)
+            
+            
+           
+            
+       
+            
+        case("notecard02"):
+            let shape = shapesFactory.createShape(
+                filePath: "new.scnassets/\(randomName)",
+                anchor: anchor)
+            if (randomName == "cell.scn"){
+                shape.scale = SCNVector3(0.000002, 0.000002, 0.000002)
+            }
+            else if (randomName == "molecule.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "sulfuricAcid.scn"){
+                shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
+            }
+            else if (randomName == "earth.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "siloxane.scn"){
+                shape.scale = SCNVector3(0.00005,0.00005,0.00005)
+            }
+            else{
+                shape.scale = SCNVector3(0.01, 0.01, 0.01)
+            }
+            currentCard = "notecard01"
+            return shape
+        case("notecard03"):
+            let shape = shapesFactory.createShape(
+                filePath: "new.scnassets/\(randomName)",
+                anchor: anchor)
+            if (randomName == "cell.scn"){
+                shape.scale = SCNVector3(0.000002, 0.000002, 0.000002)
+            }
+            else if (randomName == "molecule.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "sulfuricAcid.scn"){
+                shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
+            }
+            else if (randomName == "earth.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "siloxane.scn"){
+                shape.scale = SCNVector3(0.00005,0.00005,0.00005)
+            }
+            else{
+                shape.scale = SCNVector3(0.01, 0.01, 0.01)
+            }
+            currentCard = "notecard01"
+            return shape
+            
+            
+        case("notecard04"):
+            let shape = shapesFactory.createShape(
+                filePath: "new.scnassets/\(randomName)",
+                anchor: anchor)
+            if (randomName == "cell.scn"){
+                shape.scale = SCNVector3(0.000002, 0.000002, 0.000002)
+            }
+            else if (randomName == "molecule.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "sulfuricAcid.scn"){
+                shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
+            }
+            else if (randomName == "earth.scn"){
+                shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            }
+            else if (randomName == "siloxane.scn"){
+                shape.scale = SCNVector3(0.00005,0.00005,0.00005)
+            }
+            else{
+                shape.scale = SCNVector3(0.01, 0.01, 0.01)
+            }
+            currentCard = "notecard01"
+            return shape
             
             //            shape = shapesFactory.createShape(
             //                filePath: "new.scnassets/sulfuricAcid.scn",
@@ -107,15 +202,6 @@ class ARController {
             //                filePath: "new.scnassets/electronMicroscope.scn",
             //                anchor: anchor)
             //            shape.scale = SCNVector3(0.001,0.001,0.001)
-            
-        case("notecard02"):
-            let sphere = SCNSphere(radius: 0.05)
-            let sphereNode = SCNNode()
-            sphereNode.geometry = sphere
-            sphereNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-            self.viewController.sceneView.scene.rootNode.addChildNode(sphereNode)
-            
-            return sphereNode
             
         default:
             print("not working")

@@ -17,9 +17,9 @@ class FirebaseCommunicator {
     var imageRecieved = UIImage()
     var path=String()
     var emptyDict: [String: [String]] = [:]
-     var db_ref = Database.database().reference()
+    var db_ref = Database.database().reference()
     init() {
-        
+        print(db_ref.database)
     }
     func set_value(id:String, name:String, text:String){
         emptyDict[name] = [id,text,name]

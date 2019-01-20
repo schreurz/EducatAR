@@ -35,6 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         firebaseCom = FirebaseCommunicator()
         
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
         
         view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(didPinchView)))
@@ -69,7 +70,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func didTapView(_ sender: UIView) {
         view.endEditing(true)
-        firebaseCom.set_value(id: "12", name: "cell", text: "This is the brain")
+//        firebaseCom.set_value(id: "12", name: "cell", text: "This is the cell")
+//        firebaseCom.set_value(id: "11", name: "brain", text: "This is the brain")
         // send updated text to firebase
     }
     
