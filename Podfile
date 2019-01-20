@@ -10,5 +10,6 @@ target 'ARFlashCards' do
   pod 'Alamofire', '~> 4.8.1'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'QRCodeReader.swift', '~> 9.0.1'
   
 end
