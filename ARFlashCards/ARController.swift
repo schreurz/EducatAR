@@ -9,25 +9,16 @@
 import Foundation
 import SceneKit
 import ARKit
+import Firebase
 
 class ARController {
     
     weak var viewController: ViewController!
-    var objectHidden = true;
     var shapesFactory: ShapesFactory!
     
     init (viewController: ViewController) {
         self.viewController = viewController
         shapesFactory = ShapesFactory(sceneView: self.viewController.sceneView)
-    }
-    
-    func resetTrackingConfiguration() {
-        
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
-        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
-        self.viewController.sceneView.session.run(configuration, options: options)
     }
     
     // Override to create and configure nodes for anchors added to the view's session.
@@ -52,9 +43,30 @@ class ARController {
         }
     }
     
+    func resetTrackingConfiguration() {
+        
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.detectionImages = referenceImages
+        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
+        self.viewController.sceneView.session.run(configuration, options: options)
+    }
+    
+    //    func addBox(anchor: ARImageAnchor) {
+    //        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
+    //
+    //        let boxNode = SCNNode()
+    //        boxNode.geometry = box
+    //        print("anchor position:",anchor.transform[0])
+    //        boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
+    //
+    //        sceneView.scene.rootNode.addChildNode(boxNode)
+    //    }
+    //
     
     func addShape(name: String,anchor: ARImageAnchor){
         
+        self.viewController?.showAdditionalText(name: name)
         print(name)
         var shape: SCNNode;
         switch name{

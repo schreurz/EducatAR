@@ -10,26 +10,32 @@ import UIKit
 import SceneKit
 import ARKit
 import Alamofire
+import FirebaseDatabase
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var additionalText: UITextView!
     
-    var arController: ARController!
-    var shapesFactory: ShapesFactory!
+    var arController: ARController! // render 3d objects
+    var firebaseCom: FirebaseCommunicator! // communicator for firebase
     
+    // runs when view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         
-        shapesFactory = ShapesFactory(sceneView: sceneView)
-        
         additionalText.delegate = self as? UITextViewDelegate
-        additionalText.isHidden = false
+        additionalText.isHidden = true
         
+        self.arController = ARController(viewController: self)
+        
+        // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        downloadScn()
+        
+        firebaseCom = FirebaseCommunicator()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
     }
     
     func downloadScn(){
@@ -56,13 +62,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let objNode = scene.rootNode.childNodes[0]
         self.sceneView.scene.rootNode.addChildNode(objNode)
     }
-    func dismissKeyboard() {
+    
+    @objc func didTapView(_ sender: UIView) {
         view.endEditing(true)
     }
     
+    // ADDITIONAL TEXT
+    func showAdditionalText(name: String) {
+        DispatchQueue.main.async {
+            self.additionalText.isHidden = false
+        }
+    }
+    
+    func hideAdditionalText(name: String) {
+        DispatchQueue.main.async {
+            self.additionalText.isHidden = true
+        }
+    }
+    // ADDITIONAL TEXT
+    
+    /// ----------------------------------------- ///
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        resetTrackingConfiguration()
+        arController.resetTrackingConfiguration()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,83 +93,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-    
-    func resetTrackingConfiguration() {
-        
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
-        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
-        sceneView.session.run(configuration, options: options)
-    }
-    
-    // Override to create and configure nodes for anchors added to the view's session.
+
     func renderer(_ renderer: SCNSceneRenderer,
                   didAdd node: SCNNode,
-                  for anchor: ARAnchor) {
-        
-        
-        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
-            node.removeFromParentNode() }
-        sceneView.session.remove(anchor: anchor)
-        
-        guard let imageAnchor = anchor as? ARImageAnchor else { return }
-        let referenceImage = imageAnchor.referenceImage
-        let imageName = referenceImage.name ?? "no name"
-        print("image anchor :", imageAnchor)
-        
-        //        addBox(anchor: imageAnchor)
-        addShape(name: imageName, anchor: imageAnchor)
-        DispatchQueue.main.async {
-            print(imageName)
-        }
-    }
-    
-    //    func addBox(anchor: ARImageAnchor) {
-    //        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
-    //
-    //        let boxNode = SCNNode()
-    //        boxNode.geometry = box
-    //        print("anchor position:",anchor.transform[0])
-    //        boxNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-    //
-    //        sceneView.scene.rootNode.addChildNode(boxNode)
-    //    }
-    //
-    
-    func addShape(name: String,anchor: ARImageAnchor){
-        
-        print(name)
-        var shape: SCNNode;
-        switch name{
-        case("IMG_0247"):
-            
-            let file = Bundle.main.path(forResource: "model10", ofType: "dae") ?? ""
-//            let stringPath = Bundle.main.path(forResource: "model10", ofType: "dae")
-
-            
-            shape = shapesFactory.createShape(
-                filePath: file, //"new.scnassets/model2.scn",
-                anchor: anchor)
-            
-            
-            //Create the the node and apply texture
-            //this is only for the animal cell
-//            shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
-            
-            
-            shape.scale = SCNVector3Make(0.01,0.01,0.01)
-            
-            
-        case("IMG_0248"):
-            let sphere = SCNSphere(radius: 0.05)
-            let sphereNode = SCNNode()
-            sphereNode.geometry = sphere
-            sphereNode.position = SCNVector3(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
-            sceneView.scene.rootNode.addChildNode(sphereNode)
-            
-        default:
-            print("not working")
+        self.arController.renderer(renderer, didAdd: node, for: anchor)
         }
     }
 }

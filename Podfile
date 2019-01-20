@@ -8,4 +8,7 @@ target 'ARFlashCards' do
   # Pods for ARFlashCards
   pod 'Firebase/Core'
   pod 'Alamofire', '~> 4.8.1'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  
 end
