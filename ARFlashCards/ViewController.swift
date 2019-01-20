@@ -11,9 +11,10 @@ import SceneKit
 import ARKit
 import Alamofire
 import FirebaseDatabase
+import QRCodeReader
+import AVFoundation
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var additionalText: UITextView!
     
@@ -59,12 +60,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func didTapView(_ sender: UIView) {
         view.endEditing(true)
+        // send updated text to firebase
     }
     
     // ADDITIONAL TEXT
     func showAdditionalText(name: String) {
         DispatchQueue.main.async {
             self.additionalText.isHidden = false
+            self.additionalText.text = self.arController.currentFlashCard?.additionalText
         }
     }
     
@@ -89,7 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor){
-                  self.arController.renderer(renderer, didAdd: node, for: anchor)
-        
+        self.arController.currentFlashCard?.additionalText = self.additionalText.text
+        self.arController.renderer(renderer, didAdd: node, for: anchor)
     }
 }

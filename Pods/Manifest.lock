@@ -66,12 +66,14 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - QRCodeReader.swift (9.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.1)
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - QRCodeReader.swift (~> 9.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -88,6 +90,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - QRCodeReader.swift
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -103,7 +106,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  QRCodeReader.swift: 96292a5612fbc2fd9a0b26f93fa5164c8d02f59d
 
-PODFILE CHECKSUM: 0e109827b47ad84416983ab7132569ef4d07d658
+PODFILE CHECKSUM: 0441c19277b30ad22efb8d8353a35a51d1d91278
 
 COCOAPODS: 1.5.3

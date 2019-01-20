@@ -10,6 +10,9 @@
 		10354A9221F36C5700AB7E5B /* new.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10354A9121F36C5700AB7E5B /* new.scnassets */; };
 		108D1F6F21F30ED3008CD360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108D1F6E21F30ED3008CD360 /* Main.storyboard */; };
 		10ECB66F21F3EA2C008E88F6 /* model10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 10ECB66E21F3EA2C008E88F6 /* model10.dae */; };
+		BA495C5921F41B96003A4B2C /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA495C5821F41B96003A4B2C /* FlashCard.swift */; };
+		BA495C5B21F42521003A4B2C /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA495C5A21F42521003A4B2C /* CardDeck.swift */; };
+		BA495C5D21F438EF003A4B2C /* QRCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA495C5C21F438EF003A4B2C /* QRCodeHandler.swift */; };
 		BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */; };
 		BA6FAE4C21F397FE009D08ED /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6FAE4B21F397FE009D08ED /* ARController.swift */; };
 		BA6FAE4E21F3C3A3009D08ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */; };
@@ -29,6 +32,9 @@
 		6C1B5B2B6BF4B89C8F774436 /* Pods_ARFlashCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARFlashCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3CCA04DE3BECEF664C9FF /* Pods-ARFlashCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlashCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards.release.xcconfig"; sourceTree = "<group>"; };
 		B96636C20AF746AD8FECDEA1 /* Pods-ARFlashCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlashCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlashCards/Pods-ARFlashCards.debug.xcconfig"; sourceTree = "<group>"; };
+		BA495C5821F41B96003A4B2C /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
+		BA495C5A21F42521003A4B2C /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
+		BA495C5C21F438EF003A4B2C /* QRCodeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeHandler.swift; sourceTree = "<group>"; };
 		BA6FAE4921F37F3F009D08ED /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShapeFactory.swift; path = ../ShapeFactory.swift; sourceTree = "<group>"; };
 		BA6FAE4B21F397FE009D08ED /* ARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
 		BA6FAE4D21F3C3A3009D08ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -90,6 +96,10 @@
 				BAEBC51D21F307BD003C4593 /* AppDelegate.swift */,
 				BAEBC51F21F307BD003C4593 /* ViewController.swift */,
 				BA6FAE4B21F397FE009D08ED /* ARController.swift */,
+				BAFC37FD21F3D6870050F81B /* FirebaseCommunicator.swift */,
+				BA495C5821F41B96003A4B2C /* FlashCard.swift */,
+				BA495C5A21F42521003A4B2C /* CardDeck.swift */,
+				BA495C5C21F438EF003A4B2C /* QRCodeHandler.swift */,
 				BAEBC52721F307BE003C4593 /* Assets.xcassets */,
 				108D1F6E21F30ED3008CD360 /* Main.storyboard */,
 				BAEBC52921F307BE003C4593 /* LaunchScreen.storyboard */,
@@ -215,6 +225,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -225,6 +236,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -241,10 +253,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEBC52021F307BD003C4593 /* ViewController.swift in Sources */,
+				BA495C5D21F438EF003A4B2C /* QRCodeHandler.swift in Sources */,
 				BAFC37FE21F3D6870050F81B /* FirebaseCommunicator.swift in Sources */,
+				BA495C5B21F42521003A4B2C /* CardDeck.swift in Sources */,
 				BAEBC51E21F307BD003C4593 /* AppDelegate.swift in Sources */,
 				BAEBC52621F307BD003C4593 /* ARFlashCards.xcdatamodeld in Sources */,
 				BA6FAE4A21F37F3F009D08ED /* ShapeFactory.swift in Sources */,
+				BA495C5921F41B96003A4B2C /* FlashCard.swift in Sources */,
 				BA6FAE4C21F397FE009D08ED /* ARController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
