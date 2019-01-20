@@ -16,32 +16,33 @@ class FirebaseCommunicator {
     var storage = Storage.storage()
     var imageRecieved = UIImage()
     var path=String()
-    var emptyDict: [String: [String]] = [:]
-     var db_ref = Database.database().reference()
+    var cardRaw: NSArray?
     init() {
-        
+        ref = Database.database().reference()
     }
     func set_value(id:String, name:String, text:String){
-        emptyDict[name] = [id,name,text]
-        db_ref.setValue(emptyDict)
+        let value = [id,name,text]
+        ref.child("cards").child(name).setValue(value)
     }
     
-    func get_value(name:String){
-//        let collid = db_ref.child("sdjhf").child("1")
-        db_ref.observeSingleEvent(of: .childAdded, with : {(DataSnapshot) in
-            print(DataSnapshot)
+    func get_value(name:String, viewController: ViewController) {
+        let group = DispatchGroup()
+        group.enter()
+        var vals: NSArray?
+        
+        print("HELLO WORLD")
+        ref.child("cards").observeSingleEvent(of: .value, with : {(snapshot) in
+            let value = snapshot.value as! NSDictionary
+            self.cardRaw = value[name] as? NSArray
+            group.leave()
         })
         
-//        db_ref.observeSingleEvent(of: .childChanged,with : {(Snapshot) in
-//
-//            print("This is the snapshot",Snapshot)
-//
-//        })
-        
-//        collid.observeSingleEvent(of: .value) { (DataSnapshot) in
-//            print(DataSnapshot)
-//        }
+        group.notify(queue: .main, execute: {
+            viewController.firebaseComplete()
+        })
     }
+ 
+    
     func getFile()->String{
         
         // Create a reference from a Google Cloud Storage URI
