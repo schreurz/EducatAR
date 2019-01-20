@@ -73,10 +73,10 @@ class ARController {
         case("IMG_0247"):
             
             shape = shapesFactory.createShape(
-                filePath: "new.scnassets/model.scn",
+                filePath: "new.scnassets/model10.scn",
                 anchor: anchor)
             
-            shape.scale = SCNVector3(0.01, 0.01, 0.01)
+            shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
             
             
         case("IMG_0248"):

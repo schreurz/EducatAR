@@ -35,6 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         firebaseCom = FirebaseCommunicator()
         
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
     }
     
@@ -53,14 +54,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //                SCNScene(url: imagePath, options: nil)
 //            }
 //        }
-        guard let urlPath = Bundle.main.url(forResource: "model10", withExtension: "dae"),
-            let scene = try? SCNScene(url: urlPath, options: nil) else {
-                print("Creating the scene failed")
-                return
-        }
-        
-        let objNode = scene.rootNode.childNodes[0]
-        self.sceneView.scene.rootNode.addChildNode(objNode)
+ 
     }
     
     @objc func didTapView(_ sender: UIView) {
