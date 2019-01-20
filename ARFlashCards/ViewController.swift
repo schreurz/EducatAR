@@ -38,6 +38,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
         
         view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(didPinchView)))
+        
     }
     
     func downloadScn(){
@@ -68,9 +69,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @objc func didTapView(_ sender: UIView) {
+        self.arController.currentFlashCard?.additionalText = self.additionalText.text
+        if !self.additionalText.isHidden {
+            firebaseCom.set_value(id: (arController.currentFlashCard?.id)!,
+                                  name: (arController.currentFlashCard?.id)!,
+                                  text: (arController.currentFlashCard?.additionalText)!)
+        }
         view.endEditing(true)
-        firebaseCom.set_value(id: "12", name: "cell", text: "This is the brain")
-        // send updated text to firebase
+//        firebaseCom.set_value(id: "swirl", name: "soccerball2", text: "this is a soccerball")
+//        firebaseCom.get_value(name: "soccerball2", viewController: self)
     }
     
     // ADDITIONAL TEXT
@@ -99,6 +106,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    func firebaseComplete() {
+        print(firebaseCom.cardRaw)
+        firebaseCom.cardRaw = nil
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor){

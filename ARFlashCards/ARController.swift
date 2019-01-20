@@ -67,7 +67,7 @@ class ARController {
         
         if cardDeck.getCard(name: flashCardID) == nil {
             self.currentFlashCard = FlashCard(id: flashCardID,
-                                              name: "test",
+                                              name: "",
                                               additionalText: nil)
             cardDeck.addCard(name: flashCardID, flashCard: self.currentFlashCard!)
             
