@@ -16,6 +16,7 @@ class FirebaseCommunicator {
     var storage = Storage.storage()
     var imageRecieved = UIImage()
     var path=String()
+    
     init() {
         var db_ref = Database.database().reference()
         db_ref.setValue("Data is working")
