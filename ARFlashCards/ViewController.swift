@@ -11,7 +11,6 @@ import SceneKit
 import ARKit
 import Alamofire
 import FirebaseDatabase
-import QRCodeReader
 import AVFoundation
 
 class ViewController: UIViewController, ARSCNViewDelegate {
