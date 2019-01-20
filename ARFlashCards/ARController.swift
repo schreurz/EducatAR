@@ -18,6 +18,7 @@ class ARController {
     
     var cardDeck: CardDeck
     var currentFlashCard: FlashCard?
+    var currentShape: SCNNode?
     
     var shapesFactory: ShapesFactory! // create 3d shapes
     
@@ -60,11 +61,9 @@ class ARController {
     }
     
     func renderNewShape(flashCardID: String,anchor: ARImageAnchor) {
-        // debugging
-        print(flashCardID)
-        
-        //
-        let shape: SCNNode = getShape(name: flashCardID, anchor: anchor)!
+        print("flashCardID: ", flashCardID)
+    
+        currentShape = getShape(name: flashCardID, anchor: anchor)!
         
         if cardDeck.getCard(name: flashCardID) == nil {
             self.currentFlashCard = FlashCard(id: flashCardID,
@@ -85,10 +84,11 @@ class ARController {
             
         case("notecard01"):
             let shape = shapesFactory.createShape(
-                filePath: "new.scnassets/model.scn",
+                filePath: "new.scnassets/model2.scn",
                 anchor: anchor)
             
-            shape.scale = SCNVector3(0.000001, 0.000001, 0.000001)
+//            shape.scale = SCNVector3(0.0001, 0.0001, 0.0001)
+            shape.scale = SCNVector3(0.01, 0.01, 0.01)
             
             return shape
             
