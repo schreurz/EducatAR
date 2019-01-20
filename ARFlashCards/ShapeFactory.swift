@@ -21,6 +21,20 @@ class ShapesFactory {
     }
     
     func createShape(filePath: String, anchor: ARImageAnchor) -> SCNNode {
+        let obj = SCNScene(named: filePath)
+        let objNode = obj?.rootNode.childNodes[0]
+        self.sceneView.scene.rootNode.addChildNode(objNode!)
+        print("anchor position:", anchor.transform[0])
+        objNode!.position = SCNVector3(
+            anchor.transform.columns.3.x,
+            anchor.transform.columns.3.y,
+            anchor.transform.columns.3.z)
+        
+        
+        return objNode!
+    }
+    
+    func createShape_test(filePath: String, anchor: ARImageAnchor) -> SCNNode {
         let urlPath = Bundle.main.url(forResource: "model10", withExtension: "dae")!
         let urlPath2 = firebaseCom.getFile()
         
