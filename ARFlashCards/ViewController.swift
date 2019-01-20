@@ -11,9 +11,10 @@ import SceneKit
 import ARKit
 import Alamofire
 import FirebaseDatabase
+import QRCodeReader
+import AVFoundation
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var additionalText: UITextView!
     
