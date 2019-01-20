@@ -1,3 +1,6 @@
 node_modules
 project.pbxproj
-.DS_Store
+**/.DS_Store
+*.swp
+Podfile*
+**/Pods
