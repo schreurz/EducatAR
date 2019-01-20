@@ -35,6 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         firebaseCom = FirebaseCommunicator()
         
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
         
         view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(didPinchView)))
