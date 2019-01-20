@@ -18,9 +18,17 @@ class FirebaseCommunicator {
     var path=String()
     
     init() {
-        var db_ref = Database.database().reference()
-        db_ref.setValue("Data is working")
-            }
+        ref = Database.database().reference()
+        getFlashCard(name: "object")
+    }
+    
+    func getFlashCard(name: String) {
+        ref.child(name).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            print("key: ",snapshot.key)
+            let value = snapshot.value as? NSDictionary
+            print(value![0])
+            })
+    }
     
     func getFile()->String{
         
