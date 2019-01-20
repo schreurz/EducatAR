@@ -92,6 +92,21 @@ class ARController {
             
             return shape
             
+            //            shape = shapesFactory.createShape(
+            //                filePath: "new.scnassets/siloxane.scn",
+            //                anchor: anchor)
+            //            shape.scale = SCNVector3(0.00005,0.00005,0.00005)
+            
+            //            shape = shapesFactory.createShape(
+            //                filePath: "new.scnassets/sulfuricAcid.scn",
+            //                anchor: anchor)
+            //            shape.scale = SCNVector3(0.001,0.001,0.001)
+            
+            //            shape = shapesFactory.createShape(
+            //                filePath: "new.scnassets/electronMicroscope.scn",
+            //                anchor: anchor)
+            //            shape.scale = SCNVector3(0.001,0.001,0.001)
+            
         case("notecard02"):
             let sphere = SCNSphere(radius: 0.05)
             let sphereNode = SCNNode()
