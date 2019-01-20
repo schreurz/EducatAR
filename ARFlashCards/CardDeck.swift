@@ -11,10 +11,6 @@ import Foundation
 class CardDeck {
     var flashCards = [String: FlashCard]()
     
-    init() {
-        
-    }
-    
     func addCard(name: String, flashCard: FlashCard) {
         flashCards[name] = flashCard
     }
