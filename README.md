@@ -1,6 +1,16 @@
 # [EducatAR](https://devpost.com/software/arflashcards)
 Add more to your flash cards and increase your studying potential with EducatAR. 
 
+---
+
+## Awards
+* Most Technically Impressive
+* Best Hack For Improving Learning Experience
+* Best User Interface and Human Machine Interaction
+* Best Hack For Digital Twins
+
+---
+
 ## Inspiration todo 
 All four of us have many friends that are constantly wanting more out of studying. This was a big factor in our decision to develop a flashcard app with a twist: Augmented Reality.
 
